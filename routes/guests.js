@@ -16,7 +16,7 @@ router.get('/guests', function(req, res) {
     }
 
     var guests = JSON.parse(guestsJSON);
-
+    // console.log('what is guest', guests);
     res.send(guests);
   });
 });
@@ -57,7 +57,7 @@ router.post('/guests', function(req, res) {
     guests.push(guest);
 
     var newGuestsJSON = JSON.stringify(guests);
-
+    // console.log('what is newGuestsJSON', newGuestsJSON);
     fs.writeFile(guestsPath, newGuestsJSON, function(writeErr) {
       if (writeErr) {
         console.error(writeErr.stack);
@@ -66,7 +66,7 @@ router.post('/guests', function(req, res) {
 
       res.set('Content-Type', 'text/plain');
       res.send(guest);
-    });
+    1});
   });
 });
 
@@ -115,7 +115,7 @@ router.delete('/guests/:id', function(req, res) {
 
     var id = Number.parseInt(req.params.id);
     var guests = JSON.parse(guestsJSON);
-
+    // console.log('what is guests here that get deleted', guests);
     if (id < 0 || id >= guests.length || Number.isNaN(id) ) {
       return res.sendStatus(404);
     }
